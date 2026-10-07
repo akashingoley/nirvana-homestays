@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nirvana Homestays</title>
+  <meta name="description" content="A boutique homestay in Siolim, North Goa. Themed rooms, each with its own private balcony.">
+  <link rel="icon" href="assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..600&family=Big+Shoulders+Display:wght@200..500&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header on-dark">
+    <a href="#top" class="brand" aria-label="Nirvana Homestays, back to top">
+      <img src="assets/img/logo.png" alt="Nirvana Homestays" width="520" height="344">
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="rooms.html">Rooms</a>
+      <a href="#spaces">Spaces</a>
+      <a href="#siolim">Siolim</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 1. Hero: video plays as you scroll (doorway, balcony, out over the palms) -->
+    <section class="hero" id="top" data-header="dark">
+      <div class="hero-sticky">
+        <div class="hero-media">
+          <video class="hero-video" poster="assets/img/hero-poster.jpg" muted playsinline preload="auto">
+            <source src="assets/video/hero-mobile.mp4" type="video/mp4" media="(max-width: 767px)">
+            <source src="assets/video/hero.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="hero-copy">
+          <h1 class="hero-title"><span data-split>Nirvana</span><span class="script" data-write>Homestays</span></h1>
+          <p class="hero-sub">A boutique homestay in Siolim, North Goa. Every room has its own story and its own balcony.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-ghost" href="#rooms">See the rooms</a>
+          </div>
+        </div>
+        <!-- Lines that rise over the middle of the glide (ERA lays type over its hero as you scroll) -->
+        <p class="hero-line" aria-hidden="true"><span>Three rooms,</span><span class="script">three stories</span></p>
+        <p class="hero-line" aria-hidden="true"><span>A balcony</span><span class="script">for every one</span></p>
+      </div>
+    </section>
+
+    <!-- 2. Arch: peach circle from the logo rises over the hero -->
+    <section class="manifesto" data-header="light">
+      <div class="arch" aria-hidden="true"></div>
+      <img class="flora flora-hang" src="assets/img/flower-bougainvillea-hanging.webp" alt="" aria-hidden="true" loading="lazy" data-drift="25">
+      <div class="manifesto-inner">
+        <h2 class="display"><span data-split>Live</span><span class="script" data-write>simply</span></h2>
+        <p class="lede" data-lines>White linen, cane chairs and a balcony full of palms. Slow mornings in a quiet village on the Chapora River.</p>
+        <figure class="manifesto-media" data-reveal><img src="assets/img/live-simply.jpg" alt="A white cushion embroidered with the words Live Simply on a freshly made bed" width="720" height="766" loading="lazy" data-parallax></figure>
+      </div>
+    </section>
+
+    <!-- 3. Rooms: horizontal pan on desktop, stacked on mobile -->
+    <section class="rooms" id="rooms" data-header="light">
+      <div class="rooms-track">
+        <div class="rooms-intro">
+          <img class="flora flora-frangipani" src="assets/img/flower-frangipani.webp" alt="" aria-hidden="true" loading="lazy" data-drift="40">
+          <h2 class="display"><span data-split>Every room</span><span class="script" data-write>tells a story</span></h2>
+          <p class="lede">Each room is themed around a film or a feeling. Pick the one that fits your trip.</p>
+        </div>
+        <article class="room">
+          <figure class="room-media"><video src="assets/video/room-moksh.mp4" poster="assets/img/room-moksh.jpg" muted loop playsinline preload="metadata" data-autoplay aria-label="A tour of Moksh: the door, the bedroom, the resting Buddha, the lapis-blue bathroom and the balcony"></video></figure>
+          <h3>Moksh</h3>
+          <p>Zen and unhurried. A resting Buddha, a woven rattan lamp and a lapis-blue marble bathroom.</p>
+          <a class="room-link" href="rooms.html#moksh">Explore Moksh</a>
+        </article>
+        <article class="room">
+          <figure class="room-media"><video src="assets/video/room-go-goa-gone.mp4" poster="assets/img/room-go-goa-gone.jpg" muted loop playsinline preload="metadata" data-autoplay aria-label="A tour of Go Goa Gone: the Dil Chahta Hai poster on the door, the bedroom, terracotta figurines, the bathroom and the balcony"></video></figure>
+          <h3>Go Goa Gone</h3>
+          <p>Named for the trip every group of friends plans. Dil Chahta Hai on the door, palms on the balcony.</p>
+          <a class="room-link" href="rooms.html#go-goa-gone">Explore Go Goa Gone</a>
+        </article>
+        <article class="room">
+          <figure class="room-media"><video src="assets/video/room-filmy-chakkar.mp4" poster="assets/img/room-filmy-chakkar.jpg" muted loop playsinline preload="metadata" data-autoplay aria-label="A tour of Filmy Chakkar: the film poster on the door, the Bollywood poster wall, the bedroom, the green marble bathroom and the balcony"></video></figure>
+          <h3>Filmy Chakkar</h3>
+          <p>"Pitcher abhi baaki hai" on the door, Bollywood classics from Sholay to Gangs of Wasseypur on the walls, and a green marble bathroom.</p>
+          <a class="room-link" href="rooms.html#filmy-chakkar">Explore Filmy Chakkar</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- 4. Balconies: full-bleed image that settles as you scroll -->
+    <section class="balcony" data-header="dark">
+      <figure class="balcony-media"><img src="assets/img/balcony.jpg" alt="Balcony at golden hour: two white wicker chairs and a round glass table, low sun through the palms" width="1920" height="1072" loading="lazy"></figure>
+      <div class="balcony-copy">
+        <h2 class="display"><span data-split>Every room opens to the</span><span class="script" data-write>outdoors</span></h2>
+        <p data-lines>Wicker chairs, a glass-top table and a view into the trees. Morning chai, out on your own balcony.</p>
+      </div>
+      <figure class="balcony-float" data-reveal><img src="assets/img/balcony-top.jpg" alt="Looking down on two white wicker chairs around a glass-topped table" width="720" height="900" loading="lazy"></figure>
+    </section>
+
+    <!-- 5. Shared spaces: bento, 4 items = 4 cells -->
+    <section class="spaces" id="spaces" data-header="light">
+      <h2 class="display"><span data-split>Room to</span><span class="script" data-write>play</span></h2>
+      <p class="lede" data-lines>A lounge stocked with board games, and a game room with foosball and darts. Rainy afternoons, sorted.</p>
+      <div class="bento">
+        <figure class="cell cell-a"><div class="cell-img" data-reveal><video src="assets/video/common-area.mp4" poster="assets/img/common-area.jpg" muted loop playsinline preload="metadata" data-autoplay data-parallax aria-label="The common area: its sit back and relax sign, cane armchairs, a grey tufted armchair and a driftwood sculpture"></video></div><figcaption>The lounge</figcaption></figure>
+        <figure class="cell cell-b" data-depth="50"><div class="cell-img" data-reveal><video src="assets/video/game-room.mp4" poster="assets/img/game-room.jpg" muted loop playsinline preload="metadata" data-autoplay data-parallax aria-label="The game room: the Sholay poster on its door, a foosball table by floor-to-ceiling windows, painted signs and cane loungers"></video></div><figcaption>The game room: foosball by the windows</figcaption></figure>
+        <figure class="cell cell-c" data-depth="-35"><div class="cell-img" data-reveal><img src="assets/img/game-room_dart-wall.jpg" alt="Dartboard surrounded by movie posters" width="1000" height="834" loading="lazy" data-parallax></div><figcaption>Darts and movie posters</figcaption></figure>
+        <figure class="cell cell-d" data-depth="25"><div class="cell-img" data-reveal><img src="assets/img/board-games.jpg" alt="Monopoly, Jenga, UNO and a chess set on a black table" width="1200" height="800" loading="lazy" data-parallax></div><figcaption>Monopoly, Jenga, UNO and chess</figcaption></figure>
+      </div>
+      <img class="flora flora-corner" src="assets/img/flower-bougainvillea-corner.webp" alt="" aria-hidden="true" loading="lazy" data-drift="20">
+    </section>
+
+    <!-- 6. Siolim: drifting type lines + image -->
+    <section class="siolim" id="siolim" data-header="light">
+      <div class="siolim-type" aria-hidden="true">
+        <span class="siolim-line">Siolim</span>
+        <span class="siolim-line script">North Goa</span>
+        <span class="siolim-line">Chapora River</span>
+      </div>
+      <div class="siolim-body">
+        <img class="flora flora-palm" src="assets/img/flower-palm-frond.webp" alt="" aria-hidden="true" loading="lazy" data-drift="30">
+        <figure class="siolim-media" data-reveal><video src="assets/video/chapora-river.mp4" poster="assets/img/chapora-river.jpg" muted loop playsinline preload="none" aria-hidden="true" data-parallax data-autoplay></video></figure>
+        <div class="siolim-copy">
+          <h2 class="h3"><span>A village</span><span class="script">on the river</span></h2>
+          <p data-lines>Siolim sits on the Chapora River and is known for its São João boat festival every June. The beaches of Morjim, Ashwem, Vagator and Anjuna are close by.</p>
+        </div>
+      </div>
+
+      <div class="around">
+      <!-- Nearby: the coast north and south of the river, ERA-style line with stops. Times are approximate: owner to confirm -->
+      <div class="nearby">
+        <h2 class="h3"><span>Around</span><span class="script">the stay</span></h2>
+        <p class="lede" data-lines>The beaches run north and south of the Chapora River, and every one of them is a short drive away.</p>
+        <ol class="coast">
+            <li data-place="arambol"><span class="coast-name">Arambol</span><span class="coast-time">13 km &middot; 30 min</span><span class="coast-note">Drum circle at sunset</span></li>
+            <li data-place="mandrem"><span class="coast-name">Mandrem</span><span class="coast-time">9 km &middot; 20 min</span><span class="coast-note">Wide, quiet sand</span></li>
+            <li data-place="ashwem"><span class="coast-name">Ashwem</span><span class="coast-time">8 km &middot; 20 min</span><span class="coast-note">Beach shacks and calm water</span></li>
+            <li data-place="morjim"><span class="coast-name">Morjim</span><span class="coast-time">7 km &middot; 15 min</span><span class="coast-note">Olive Ridley turtles nest here</span></li>
+            <li class="coast-home" data-place="nirvana"><span class="coast-name">Nirvana</span><span class="coast-time">Siolim</span><span class="coast-note">Your base, just inland on the Chapora River</span></li>
+            <li data-place="chapora-fort"><span class="coast-name">Chapora Fort</span><span class="coast-time">8 km &middot; 20 min</span><span class="coast-note">The Dil Chahta Hai fort</span></li>
+            <li data-place="vagator"><span class="coast-name">Vagator</span><span class="coast-time">8 km &middot; 20 min</span><span class="coast-note">Red cliffs over the sea</span></li>
+            <li data-place="anjuna"><span class="coast-name">Anjuna</span><span class="coast-time">9 km &middot; 20 min</span><span class="coast-note">Rocky shore and caf&eacute;s</span></li>
+        </ol>
+        <div class="nearby-more">
+          <h3>Also nearby</h3>
+          <ul>
+            <li data-place="church"><span>St Anthony's Church, Siolim</span><span class="coast-time">2 km &middot; 5 min</span></li>
+            <li><span>Anjuna Flea Market, Wednesdays</span><span class="coast-time">8 km &middot; 20 min</span></li>
+            <li><span>Mapusa Friday Market</span><span class="coast-time">10 km &middot; 25 min</span></li>
+            <li><span>Thivim railway station</span><span class="coast-time">16 km &middot; 25 min</span></li>
+            <li><span>Mopa airport (Manohar International)</span><span class="coast-time">23 km &middot; 40 min</span></li>
+          </ul>
+          <p class="nearby-note">Driving distances from the stay. Times are approximate and depend on traffic.</p>
+        </div>
+      </div>
+
+      <!-- Find us: a still map (OpenStreetMap, tinted in CSS) that opens the Google Maps listing -->
+      <div class="find-us" id="find-us">
+        <div class="find-copy">
+          <h2 class="h3"><span>Find</span><span class="script">us here</span></h2>
+          <address>House no 451/4, Tarchi Bhat<br>Behind Babaji Cold Drinks, near Siolim Deck<br>Siolim, Goa 403517</address>
+          <div class="find-links">
+            <a class="btn btn-line" href="https://www.google.com/maps/dir/?api=1&amp;destination=15.630169,73.76685" target="_blank" rel="noopener">Get directions</a>
+            <a class="btn btn-line" href="https://maps.app.goo.gl/1t9dvzFMbX5N9JNp7" target="_blank" rel="noopener">Open in Google Maps</a>
+          </div>
+        </div>
+        <figure class="map-card" data-reveal>
+          <a href="https://maps.app.goo.gl/1t9dvzFMbX5N9JNp7" target="_blank" rel="noopener" aria-label="Open Nirvana Homestays in Google Maps">
+            <img src="assets/img/map-siolim.jpg" alt="Map of the North Goa coast from Arambol to Anjuna, with Nirvana Homestays inland on the Chapora River at Siolim" width="1120" height="1400" loading="lazy">
+            <span class="map-dot" data-place="arambol" style="left:8.9%;top:7.8%" aria-hidden="true"><b>Arambol</b></span>
+            <span class="map-dot" data-place="mandrem" style="left:17.3%;top:24.2%" aria-hidden="true"><b>Mandrem</b></span>
+            <span class="map-dot" data-place="ashwem" style="left:23.6%;top:39.9%" aria-hidden="true"><b>Ashwem</b></span>
+            <span class="map-dot" data-place="morjim" style="left:34.7%;top:56.6%" aria-hidden="true"><b>Morjim</b></span>
+            <span class="map-dot" data-place="chapora-fort" style="left:40.4%;top:70.9%" aria-hidden="true"><b>Chapora Fort</b></span>
+            <span class="map-dot" data-place="vagator" style="left:38.5%;top:78.1%" aria-hidden="true"><b>Vagator</b></span>
+            <span class="map-dot" data-place="anjuna" style="left:45.5%;top:96.7%" aria-hidden="true"><b>Anjuna</b></span>
+            <span class="map-dot map-dot-left" data-place="church" style="left:77.1%;top:63.6%" aria-hidden="true"><b>St Anthony's</b></span>
+            <span class="map-pin" data-place="nirvana" style="left:73.2%;top:50.0%" aria-hidden="true"><img src="assets/img/logo.png" alt="" width="520" height="344"></span>
+            <svg class="map-route" viewBox="0 0 1120 1400" aria-hidden="true"><path d=""/></svg>
+            <span class="map-hint" aria-hidden="true">Open in Google Maps</span>
+          </a>
+          <figcaption>Map data &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors</figcaption>
+        </figure>
+      </div>
+      </div>
+    </section>
+
+    <!-- 7. Book: the entrance doors open as you scroll, then the sign-off appears -->
+    <section class="book" id="book" data-header="dark">
+      <div class="book-sticky">
+        <figure class="book-media"><video class="book-video" poster="assets/img/entrance-doors.jpg" muted playsinline preload="auto" aria-hidden="true">
+          <source src="assets/video/entrance-doors-mobile.mp4" type="video/mp4" media="(max-width: 767px)">
+          <source src="assets/video/entrance-doors.mp4" type="video/mp4">
+        </video></figure>
+        <div class="book-copy">
+          <img class="book-logo" src="assets/img/logo.png" alt="Nirvana Homestays" width="520" height="344" loading="lazy">
+          <h2 class="display"><span data-split>Welcome to our</span><span class="script" data-write>home</span></h2>
+          <a class="btn btn-ghost" href="rooms.html">Explore the rooms</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" data-header="dark">
+    <p>Nirvana Homestays, Siolim, North Goa</p>
+    <p>&copy; 2026</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.3.21/dist/lenis.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,489 @@
+/* Palette from the Nirvana Homestays logo: peach circle, forest-green script, peacock feather */
+:root {
+  --paper: #f3f4ee;
+  --ink: #26331f;
+  --ink-soft: #4c5847;
+  --peach: #f0c0a0;
+  --frame: #1b2516;          /* dark frame around hero / booking, both modes */
+  --on-frame: #f3f4ee;
+  --accent: #1f6e8f;         /* peacock blue, the only accent */
+  --sky: #dce8ea;            /* pale peacock tint: colour block behind "Room to play" */
+  --gutter: clamp(16px, 4vw, 56px);
+  --header-h: 88px;
+  --display: "Big Shoulders Display", "Arial Narrow", sans-serif;
+  --body: "Archivo", system-ui, sans-serif;
+  --script: "Mrs Saint Delafield", cursive;   /* accent word in each headline, echoing the logo's script */
+  --ease-out: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #141b11;
+    --ink: #e6eadf;
+    --ink-soft: #aeb6a6;
+    --peach: #3d2c22;
+    --frame: #0f150c;
+    --accent: #5fb3d3;
+    --sky: #11252b;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-stretch: 112%;
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img, video { display: block; max-width: 100%; }
+figure { margin: 0; }
+a { color: inherit; }
+::selection { background: var(--accent); color: var(--paper); }
+
+/* Type */
+.display {
+  font-family: var(--display);
+  font-weight: 300;
+  text-transform: uppercase;
+  line-height: 0.88;
+  letter-spacing: -0.005em;
+  font-size: clamp(3.5rem, 9vw, 9rem);
+  margin: 0;
+}
+.h3 {
+  font-family: var(--display);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: clamp(2rem, 3.4vw, 3.2rem);
+  line-height: 0.95;
+  margin: 0 0 1rem;
+}
+.lede { color: var(--ink-soft); max-width: 42ch; font-size: 1.05rem; }
+[data-split] { perspective: 700px; display: block; }
+/* Script accent: overlaps the line above, slightly tilted, like ERA's "Estepona" */
+.script {
+  display: block;
+  font-family: var(--script); font-weight: 400; text-transform: none; letter-spacing: 0;
+  font-size: 0.95em; line-height: 1;
+  margin: -0.42em 0 0 0.9em;
+  color: var(--accent);
+  transform: rotate(-4deg); transform-origin: 0 50%;
+}
+/* On the dark frames the script is always peach, in both colour schemes */
+.hero .script, .balcony .script, .book .script { color: #f0c0a0; }
+
+/* Buttons: all pill, images all sharp */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 0.95em 1.7em;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-family: var(--body);
+  font-stretch: 118%;
+  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.3s var(--ease-out), color 0.3s var(--ease-out), transform 0.2s var(--ease-out);
+}
+.btn:active { transform: scale(0.98); }
+.btn:focus-visible, .nav a:focus-visible, .brand:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.btn-ghost { border-color: currentColor; color: var(--on-frame); }
+.btn-ghost:hover { background: rgb(243 244 238 / 0.14); }
+.btn-line { border-color: currentColor; color: var(--ink); }   /* outline pill for light sections */
+.btn-line:hover { background: var(--ink); color: var(--paper); }
+
+/* Header */
+.site-header {
+  position: fixed; inset: 0 0 auto 0; z-index: 10;
+  height: var(--header-h);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 var(--gutter);
+  color: var(--ink);
+  transition: color 0.4s var(--ease-out);
+}
+.site-header.on-dark { color: var(--on-frame); }
+.brand img { height: 66px; width: auto; }
+.nav { display: flex; align-items: center; gap: clamp(16px, 2.4vw, 36px); }
+.nav a:not(.btn) {
+  font-size: 0.8rem; font-weight: 500; font-stretch: 118%;
+  letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+}
+.nav a:not(.btn):hover { color: var(--accent); }
+.site-header.on-dark .nav a:not(.btn):hover { color: var(--peach); }
+
+/* 1. Hero */
+.hero { height: 420vh; position: relative; background: var(--frame); }
+.hero-sticky { position: sticky; top: 0; height: 100dvh; overflow: hidden; }
+.hero-media { position: absolute; inset: 0; clip-path: inset(11% 17% 11% 17% round 999px 999px 0px 0px); }
+.hero-media::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    linear-gradient(to bottom, rgb(15 21 12 / 0.5), transparent 22%),
+    linear-gradient(to top, rgb(15 21 12 / 0.65), transparent 55%);
+}
+.hero-video { width: 100%; height: 100%; object-fit: cover; }
+.hero-copy {
+  position: absolute; left: var(--gutter); right: var(--gutter); bottom: 7vh;
+  color: var(--on-frame);
+  display: grid; gap: 1.1rem; justify-items: start;
+}
+.hero-title {
+  font-family: var(--display); font-weight: 300; text-transform: uppercase;
+  font-size: clamp(5.5rem, 17vw, 16rem); line-height: 0.8; margin: 0;
+}
+.hero-title .script { font-size: 0.5em; margin: -0.3em 0 0 1.5em; }
+/* Short or multi-line headings need a bigger script word and less overlap to stay readable */
+.rooms-intro .script { font-size: 1em; margin: -0.18em 0 0 0.6em; }
+.balcony-copy .script { font-size: 1.3em; margin: -0.12em 0 0 1.2em; }
+.book-copy .script { font-size: 1.6em; margin: -0.2em 0 0 1.4em; }
+.hero-sub { margin: 0; max-width: 36ch; font-size: 1.05rem; }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-line {
+  position: absolute; inset: 0; margin: 0; z-index: 2;
+  display: grid; place-content: center; text-align: center;
+  font-family: var(--display); font-weight: 300; text-transform: uppercase;
+  font-size: clamp(3rem, 8vw, 8rem); line-height: 0.9; color: var(--on-frame);
+  text-shadow: 0 2px 30px rgb(15 21 12 / 0.45);
+  visibility: hidden;   /* shown by the hero timeline; stays hidden under reduced motion */
+  background: radial-gradient(ellipse 45% 35% at 50% 50%, rgb(15 21 12 / 0.5), transparent);   /* soft pool of shade so the lines read over bright frames */
+}
+.hero-line .script { margin: -0.32em 0 0 1.4em; font-size: 1.05em; }
+
+/* 2. Manifesto + arch */
+.manifesto {
+  position: relative; z-index: 2;
+  background: var(--peach);
+  padding: 6vh var(--gutter) 22vh;
+  text-align: center;
+}
+.arch {
+  position: absolute; left: 0; right: 0; bottom: calc(100% - 1px);
+  height: 50vw;
+  background: var(--peach);
+  border-radius: 50vw 50vw 0 0;
+  transform-origin: 50% 100%;
+}
+.manifesto-inner { position: relative; display: grid; justify-items: center; gap: 1.5rem; }
+.manifesto .display { font-size: clamp(4.5rem, 15vw, 14rem); }
+.manifesto .lede { color: var(--ink); font-size: 1.15rem; margin: 0; }
+/* The cushion photo sits in its own small arch, echoing the peach one above */
+.manifesto-media { width: clamp(220px, 28vw, 400px); aspect-ratio: 3 / 4; overflow: hidden; margin-top: 4vh; border-radius: 999px 999px 0 0; }
+.manifesto-media img { width: 100%; height: 120%; object-fit: cover; }
+
+/* 3. Rooms */
+.rooms { position: relative; overflow: hidden; padding: 16vh 0; }
+.rooms-track { display: flex; flex-direction: column; gap: 10vh; padding: 0 var(--gutter); }
+.rooms-intro .lede { margin-top: 1.5rem; }
+.room h3 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 2.6rem; line-height: 1; margin: 1.2rem 0 0.4rem; }
+.room p { margin: 0; color: var(--ink-soft); max-width: 38ch; }
+/* Landscape, so the room tours show the whole width of each room */
+.room-media { aspect-ratio: 4 / 3; overflow: hidden; }
+.room-media > * { width: 100%; height: 100%; object-fit: cover; }
+
+@media (min-width: 992px) {
+  .rooms { height: 100dvh; padding: 0; }
+  .rooms-track {
+    flex-direction: row; align-items: center; gap: 6vw;
+    height: 100%; width: max-content;
+    padding: var(--header-h) var(--gutter) 0;
+  }
+  .rooms-intro { width: 34vw; }
+  .room { width: 38vw; }
+  .room-media { max-height: 58vh; }
+  .room-media > * { width: 120%; max-width: none; margin-left: -10%; }
+  .room:nth-of-type(2) { margin-top: 12vh; }
+}
+
+/* 4. Balcony */
+.balcony { position: relative; min-height: 120vh; color: var(--on-frame); background: var(--frame); }
+.balcony-media { position: absolute; inset: 0; overflow: hidden; }
+.balcony-media img { width: 100%; height: 100%; object-fit: cover; }
+.balcony-media::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgb(15 21 12 / 0.75), rgb(15 21 12 / 0.1) 60%);
+}
+.balcony-copy { position: absolute; left: var(--gutter); right: var(--gutter); bottom: 10vh; display: grid; gap: 1.2rem; }
+.balcony-copy .display { max-width: 12ch; }
+.balcony-copy p { margin: 0; max-width: 40ch; font-size: 1.05rem; }
+/* A second, smaller photo that hangs over the section edge into "Room to play" (ERA's overlapping collage) */
+.balcony-float {
+  position: absolute; z-index: 3; right: 7vw; bottom: -18vh;
+  width: clamp(150px, 22vw, 340px); aspect-ratio: 4 / 5; overflow: hidden;
+}
+.balcony-float img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 767px) {
+  .balcony { min-height: 82vh; }   /* shorter, so the landscape photo is less cropped on a tall screen */
+  .balcony-float { width: 40vw; right: var(--gutter); bottom: -12vh; }
+}
+
+/* 5. Spaces bento */
+.spaces { position: relative; padding: 18vh var(--gutter); background: var(--sky); overflow-x: clip; }   /* trims the corner flower at the screen edge; it still spills downward */
+
+/* Flower and leaf cut-outs that spill over section edges (ERA's bougainvillea) */
+.flora { position: absolute; z-index: 4; height: auto; pointer-events: none; }
+.flora-hang { top: -24vh; right: 22vw; width: clamp(110px, 12vw, 220px); }
+.flora-frangipani { top: -20vh; left: 46%; width: clamp(130px, 15vw, 250px); }
+.flora-corner { right: -3vw; bottom: -12vh; width: clamp(220px, 30vw, 520px); }   /* image is pre-flipped to grow in from the right */
+.flora-palm { top: -9vh; left: -9vw; width: clamp(200px, 32vw, 560px); }   /* stem enters from the left edge, leaves arch over the video */
+.rooms-intro, .siolim-body { position: relative; }
+@media (max-width: 767px) {
+  .flora-frangipani { top: -14vh; left: auto; right: 0; }
+  .flora-hang { right: 6vw; }
+  .flora-palm { top: 4vh; left: -20vw; width: 62vw; }   /* over the video's top-left corner, clear of the drifting type */
+}
+.spaces .lede { margin: 1.5rem 0 0; }
+.bento {
+  margin-top: 8vh;
+  display: grid; gap: clamp(12px, 1.6vw, 24px);
+  grid-template-columns: 1fr;
+  grid-auto-rows: 70vw;
+}
+.cell { display: flex; flex-direction: column; min-height: 0; }
+.cell-img { flex: 1; min-height: 0; overflow: hidden; }
+.cell-img > * { width: 100%; height: 120%; object-fit: cover; }
+.cell figcaption { margin-top: 0.6rem; font-size: 0.85rem; color: var(--ink-soft); }
+@media (min-width: 768px) {
+  .bento { grid-template-columns: 2fr 1fr 1fr; grid-auto-rows: clamp(240px, 24vw, 400px); }
+  .cell-a { grid-column: 1; grid-row: 1 / 3; }
+  .cell-b { grid-column: 2 / 4; grid-row: 1; }   /* landscape, for the game room clip */
+  .cell-c { grid-column: 2; grid-row: 2; }
+  .cell-d { grid-column: 3; grid-row: 2; }
+}
+
+/* 6. Siolim */
+.siolim { padding: 14vh 0 18vh; overflow-x: clip; }   /* clip, not hidden: hidden would stop the map from sticking */
+.siolim-type {
+  display: flex; flex-direction: column;
+  font-family: var(--display); font-weight: 200; text-transform: uppercase;
+  font-size: clamp(5rem, 17vw, 17rem); line-height: 0.82;
+  white-space: nowrap;
+  padding-left: var(--gutter);
+}
+.siolim-line:nth-child(2) { padding-left: 18vw; margin: 0; transform: none; font-size: 0.8em; line-height: 1.15; }
+.siolim-line:nth-child(3) { padding-left: 6vw; }
+.siolim-body { display: grid; gap: 2rem; padding: 10vh var(--gutter) 0; }
+.siolim-media { aspect-ratio: 4 / 3; overflow: hidden; }
+.siolim-media video { width: 100%; height: 120%; object-fit: cover; }
+.siolim-copy .h3 { font-size: clamp(2.6rem, 4.6vw, 4.8rem); margin-bottom: 1.4rem; }
+.siolim-copy .script { font-size: 1.25em; margin: -0.3em 0 0 0.7em; }
+.siolim-copy p { margin: 0; color: var(--ink-soft); max-width: 36ch; font-size: 1.1rem; }
+@media (min-width: 768px) {
+  .siolim-body { grid-template-columns: 7fr 5fr; align-items: center; gap: 5vw; }
+}
+
+/* Nearby: the coast as a wavy line with a stop per beach (ERA's coastline graphic) */
+.nearby { padding: 14vh var(--gutter) 0; }
+.nearby .h3 { font-size: clamp(2.6rem, 4.6vw, 4.8rem); margin-bottom: 1.4rem; }
+.nearby .script { font-size: 1.25em; margin: -0.3em 0 0 0.7em; }
+.coast { list-style: none; margin: 8vh 0 0; padding: 0 0 0 30px; display: grid; gap: 1.8rem; position: relative; }
+.coast::before {   /* the coastline: a hand-drawn wave, vertical on phones */
+  content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 10px; background: var(--ink-soft);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='40'%3E%3Cpath d='M5 0 Q10 10 5 20 T5 40' fill='none' stroke='black' stroke-width='1.4'/%3E%3C/svg%3E") repeat-y;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='40'%3E%3Cpath d='M5 0 Q10 10 5 20 T5 40' fill='none' stroke='black' stroke-width='1.4'/%3E%3C/svg%3E") repeat-y;
+}
+.coast li { position: relative; display: grid; gap: 0.15rem; }
+.coast li::before { content: ""; position: absolute; left: -28px; top: 0.4em; width: 10px; height: 10px; border-radius: 50%; background: var(--paper); border: 2px solid var(--accent); }
+.coast-name { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 1.6rem; line-height: 1; }
+.coast-time { font-size: 0.72rem; font-weight: 500; font-stretch: 118%; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+.coast-note { font-size: 0.9rem; color: var(--ink-soft); }
+.coast-home::before { background: var(--peach) !important; border-color: var(--peach) !important; width: 18px !important; height: 18px !important; left: -32px !important; top: 0.15em !important; box-shadow: 0 0 0 5px rgb(31 110 143 / 0.25); }
+.coast-home .coast-name { font-family: var(--script); text-transform: none; font-size: 2.2rem; color: var(--accent); }
+.nearby-more { margin-top: 10vh; display: grid; gap: 1rem; }
+.nearby-more h3 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 1.6rem; margin: 0; }
+.nearby-more ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.nearby-more li { display: flex; justify-content: space-between; gap: 1rem; padding: 0.9rem 0; border-top: 1px solid rgb(127 127 127 / 0.25); }
+.nearby-more .coast-time { white-space: nowrap; }
+.nearby-note { margin: 0.5rem 0 0; font-size: 0.8rem; color: var(--ink-soft); }
+/* Desktop: the list on the left lines up with the map on the right, since the coast runs down the map's west side */
+@media (min-width: 900px) {
+  .around { display: grid; grid-template-columns: 5fr 6fr; grid-template-areas: "near map" "find map"; column-gap: 6vw; align-items: start; padding: 14vh var(--gutter) 0; }
+  .around .nearby { grid-area: near; padding: 0; }
+  .around .find-us { display: contents; }
+  .around .find-copy { grid-area: find; margin-top: 10vh; }
+  /* The map stays put while the list scrolls past, sized to fit the screen so the stay's pin is always in view */
+  .around .map-card { grid-area: map; position: sticky; top: calc(var(--header-h) + 2vh); justify-self: end; width: min(100%, calc((100svh - var(--header-h) - 8vh) * 0.8)); }
+  .around .coast { margin-top: 6vh; }
+  .around .nearby-more { margin-top: 8vh; }
+}
+
+/* Find us: still map that links out to Google Maps */
+.find-us { display: grid; gap: 2rem; padding: 14vh var(--gutter) 0; }
+.find-copy .h3 { font-size: clamp(2.6rem, 4.6vw, 4.8rem); margin-bottom: 1.4rem; }
+.find-copy .script { font-size: 1.25em; margin: -0.3em 0 0 0.7em; }
+.find-copy address { font-style: normal; color: var(--ink-soft); font-size: 1.1rem; line-height: 1.7; }
+.find-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 2rem; }
+.map-card { margin: 0; }
+.map-card > a { position: relative; display: block; aspect-ratio: 1120 / 1400; overflow: hidden; }   /* the image's own shape, so the markers line up */
+.map-card > a > img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.55) sepia(0.3) saturate(1.1) contrast(0.95); transition: transform 1.2s var(--ease-out), filter 0.6s; }
+.map-card > a:hover > img { transform: scale(1.04); filter: grayscale(0.2) sepia(0.15); }
+.map-pin {
+  position: absolute; width: 64px; aspect-ratio: 1; translate: -50% -50%; z-index: 2;
+  display: grid; place-items: center; border-radius: 50%; background: var(--peach);
+  box-shadow: 0 0 0 6px rgb(31 110 143 / 0.25), 0 8px 24px rgb(15 21 12 / 0.35);
+}
+.map-pin img { width: 52px; height: auto; }
+/* A dot per beach, with its name; the matching list item highlights it on hover */
+.map-dot { position: absolute; translate: -6px -50%; display: flex; align-items: center; gap: 6px; pointer-events: none; }
+.map-dot::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); border: 2px solid #fff; box-shadow: 0 1px 4px rgb(0 0 0 / 0.3); transition: transform 0.3s var(--ease-out); }
+.map-dot b { font-weight: 500; font-size: 0.66rem; font-stretch: 118%; letter-spacing: 0.05em; text-transform: uppercase; color: #26331f; background: rgb(243 244 238 / 0.9); padding: 0.25em 0.6em; border-radius: 999px; white-space: nowrap; transition: background-color 0.3s, color 0.3s; }
+.map-dot.is-active::before { transform: scale(1.6); }
+.map-dot-left { flex-direction: row-reverse; translate: calc(-100% + 6px) -50%; }   /* label opens leftwards near the right edge */
+/* Dashed route from the stay to the place being hovered */
+.map-route { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+.map-route path { fill: none; stroke: var(--accent); stroke-width: 5; stroke-linecap: round; stroke-dasharray: 2 14; opacity: 0; transition: opacity 0.3s; }
+.map-route.is-on path { opacity: 1; animation: route-march 0.8s linear infinite; }
+@keyframes route-march { to { stroke-dashoffset: -32; } }
+.map-dot.is-active b { background: var(--accent); color: #fff; }
+.coast li[data-place], .nearby-more li[data-place] { cursor: default; }
+.coast li.is-active .coast-name, .nearby-more li.is-active span:first-child { color: var(--accent); }
+.map-pin::after { content: ""; position: absolute; inset: -6px; border-radius: 50%; border: 2px solid var(--accent); animation: pin-pulse 2.4s var(--ease-out) infinite; }
+@keyframes pin-pulse { from { transform: scale(1); opacity: 0.8; } to { transform: scale(1.9); opacity: 0; } }
+.map-hint {
+  position: absolute; right: 16px; bottom: 16px; padding: 0.7em 1.3em; border-radius: 999px;
+  background: var(--ink); color: var(--paper);
+  font-size: 0.72rem; font-weight: 500; font-stretch: 118%; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.map-card figcaption { margin-top: 0.6rem; font-size: 0.75rem; color: var(--ink-soft); }
+.map-card > a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+@media (min-width: 768px) { .find-us { grid-template-columns: 4fr 7fr; align-items: center; gap: 5vw; } }
+@media (prefers-reduced-motion: reduce) { .map-pin::after { animation: none; } }
+
+/* 7. Book */
+.book { height: 320vh; position: relative; background: var(--frame); color: var(--on-frame); }
+.book-sticky { position: sticky; top: 0; height: 100dvh; overflow: hidden; }
+.book-media { position: absolute; inset: 0; }
+.book-media video { width: 100%; height: 100%; object-fit: cover; }
+.book-media::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    linear-gradient(to bottom, rgb(15 21 12 / 0.5), transparent 22%),
+    linear-gradient(to top, rgb(15 21 12 / 0.8), transparent 50%);
+}
+.book-copy {
+  position: absolute; left: var(--gutter); right: var(--gutter); bottom: 8vh;
+  display: grid; justify-items: center; gap: 1.4rem; text-align: center;
+}
+.book-logo { width: 150px; height: auto; }
+.book-copy .display { font-size: clamp(3rem, 7vw, 7rem); }
+
+/* Room card link on the home page */
+.room-link {
+  display: inline-block; margin-top: 1rem;
+  font-size: 0.78rem; font-weight: 500; font-stretch: 118%; letter-spacing: 0.06em; text-transform: uppercase;
+  text-decoration: underline; text-underline-offset: 0.35em; text-decoration-thickness: 1px;
+}
+.room-link::after { content: " \2192"; }
+.room-link:hover { color: var(--accent); }
+
+/* ---------- Rooms page (rooms.html) ---------- */
+.rp-hero {
+  background: var(--frame); color: var(--on-frame);
+  padding: calc(var(--header-h) + 10vh) var(--gutter) 14vh;
+  display: grid; justify-items: center; text-align: center; gap: 1.6rem;
+}
+.rp-hero .display { font-size: clamp(4rem, 12vw, 12rem); }
+.rp-hero .script { color: #f0c0a0; margin: -0.35em 0 0 1.4em; }
+.rp-hero .lede { color: var(--on-frame); opacity: 0.8; margin: 0; }
+.rp-arches { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 3vw, 48px); width: min(100%, 1100px); margin-top: 6vh; }
+.rp-arches a { text-decoration: none; display: grid; gap: 1rem; justify-items: center; }
+.rp-arches figure { width: 100%; aspect-ratio: 3 / 4; overflow: hidden; border-radius: 999px 999px 0 0; }
+.rp-arches img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease-out); }
+.rp-arches a:hover img { transform: scale(1.05); }
+.rp-arches span { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(1.1rem, 2.4vw, 2rem); line-height: 1; }
+.rp-arches a:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
+
+.rp { position: relative; padding: 18vh var(--gutter); overflow-x: clip; }
+.rp-paper { background: var(--paper); }
+.rp-sky { background: var(--sky); }
+.rp-peach { background: var(--peach); }
+.rp-head { display: grid; gap: 2rem; }
+.rp-head .display { font-size: clamp(3.8rem, 10vw, 10rem); }
+.rp-head .script { font-size: 0.62em; margin: -0.25em 0 0 0.8em; }
+.rp-text p { margin: 0; max-width: 46ch; font-size: 1.1rem; }
+.rp-features { list-style: none; padding: 0; margin: 1.6rem 0 0; display: flex; flex-wrap: wrap; gap: 0.5rem; max-width: 52ch; }
+.rp-features li {
+  padding: 0.45em 1em; border: 1px solid currentColor; border-radius: 999px;
+  font-size: 0.72rem; font-weight: 500; font-stretch: 118%; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.rp-tour { margin-top: 8vh; aspect-ratio: 16 / 9; overflow: hidden; }
+.rp-tour video { width: 100%; height: 120%; object-fit: cover; }
+/* Collage: two landscape photos and two portraits at different depths, ERA-style */
+.rp-gallery { position: relative; margin-top: 10vh; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(12px, 2vw, 32px); align-items: start; }
+.rp-gallery figure { margin: 0; }
+.rp-gallery figure img { width: 100%; height: 100%; object-fit: cover; }
+.rp-gallery figcaption { margin-top: 0.6rem; font-size: 0.85rem; color: var(--ink-soft); }
+.rp-gallery .g1, .rp-gallery .g4 { aspect-ratio: 3 / 2; overflow: hidden; }
+.rp-gallery .g2 > div, .rp-gallery .g3 > div { aspect-ratio: 4 / 5; overflow: hidden; }
+.g1 { grid-column: 1 / 8; }
+.g2 { grid-column: 9 / 13; margin-top: 14vh; }
+.g3 { grid-column: 2 / 6; margin-top: -4vh; }
+.g4 { grid-column: 7 / 13; margin-top: 8vh; }
+/* Each room's motif, drawn from its door (tools/room-motifs.py), sits between the title and the text */
+.rp-motif { width: clamp(150px, 14vw, 250px); justify-self: center; pointer-events: none; order: -1; }   /* above the title on phones */
+/* Flowers enter from the left, over the top corner of the tour video */
+.rp-tour-wrap { position: relative; }
+.rp-tour-wrap .flora { z-index: 2; }
+.rp-flora-frangipani { top: -9vh; left: -5vw; width: clamp(150px, 15vw, 250px); }
+.rp-flora-bougainvillea-hanging { top: -16vh; left: -2vw; width: clamp(110px, 11vw, 190px); }
+.rp-flora-palm-frond { top: -12vh; left: -11vw; width: clamp(220px, 28vw, 480px); }
+.rp-end { background: var(--frame); color: var(--on-frame); padding: 20vh var(--gutter); display: grid; justify-items: center; text-align: center; gap: 3rem; }
+.rp-end .display { font-size: clamp(3.5rem, 9vw, 9rem); }
+.rp-end .script { color: #f0c0a0; margin: -0.35em 0 0 1.2em; }
+.rp-end-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+@media (min-width: 900px) {
+  /* title and motif side by side, text underneath; a third column for the text only where there's room */
+  .rp-head { grid-template-columns: auto minmax(140px, 1fr); align-items: center; gap: 3vw 4vw; }
+  .rp-motif { order: 0; }
+  .rp-text { grid-column: 1 / -1; }
+}
+@media (min-width: 1280px) {
+  .rp-head { grid-template-columns: auto minmax(140px, 1fr) minmax(320px, 1.1fr); }
+  .rp-text { grid-column: auto; }
+}
+@media (max-width: 767px) {
+  .rp { padding: 12vh var(--gutter); }
+  .rp-gallery { grid-template-columns: 1fr 1fr; }
+  .g1, .g4 { grid-column: 1 / -1; margin-top: 0; }
+  .g2 { grid-column: 1; margin-top: 0; }
+  .g3 { grid-column: 2; margin-top: 8vh; }
+  .rp-head .script { margin-top: -0.05em; }
+  .rp-motif { width: 46vw; margin-bottom: 2vh; }
+  .rp-flora-frangipani { top: -6vh; left: -8vw; width: 36vw; }
+  .rp-flora-bougainvillea-hanging { top: -9vh; left: -4vw; width: 24vw; }
+  .rp-flora-palm-frond { top: -6vh; left: -16vw; width: 58vw; }
+}
+
+/* Footer */
+.site-footer {
+  display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  padding: 28px var(--gutter);
+  background: var(--frame); color: var(--on-frame);
+  font-size: 0.8rem; border-top: 1px solid rgb(243 244 238 / 0.12);
+}
+.site-footer p { margin: 0; }
+
+/* Mobile */
+@media (max-width: 767px) {
+  :root { --header-h: 72px; }
+  .brand img { height: 52px; }
+  .nav a:not(.btn) { display: none; }
+  .hero-media { clip-path: inset(9% 4% 9% 4% round 999px 999px 0px 0px); }
+  /* The title sits over the bright balcony door on phones, so darken more of the bottom */
+  .hero-media::after { background: linear-gradient(to bottom, rgb(15 21 12 / 0.5), transparent 22%), linear-gradient(to top, rgb(15 21 12 / 0.85), rgb(15 21 12 / 0.4) 45%, transparent 70%); }
+}
+
+/* Reduced motion: no scroll-driven choreography, everything static and visible */
+@media (prefers-reduced-motion: reduce) {
+  .hero { height: 100dvh; }
+  .hero-media { clip-path: none; }
+  .book { height: auto; }
+  .book-sticky { position: relative; min-height: 100dvh; }
+}

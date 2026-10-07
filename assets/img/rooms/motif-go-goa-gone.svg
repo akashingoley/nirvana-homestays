@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<defs><path id="rim" d="M200,200 m-168,0 a168,168 0 1,1 336,0 a168,168 0 1,1 -336,0"/>
+<clipPath id="inside"><circle cx="200" cy="200" r="146"/></clipPath><clipPath id="sky"><rect x="0" y="0" width="400" height="240"/></clipPath></defs>
+<text font-family="Arial Narrow, Helvetica Neue, Arial, sans-serif" font-size="15.5" font-weight="700" fill="#b39a72"><textPath href="#rim" textLength="1040" lengthAdjust="spacing">HUM LOGO KO SAL ME EK BAR GOA JAROOR JANA CHAIYE  •  DIL CHAHTA HAI  •  </textPath></text>
+<circle cx="200" cy="200" r="150" stroke="#b39a72" stroke-width="2.4"/>
+<g clip-path="url(#inside)">
+  <circle cx="200" cy="238" r="74" fill="#e8743b" clip-path="url(#sky)"/>   <!-- half a sun, setting -->
+  <rect x="40" y="238" width="320" height="140" fill="#3b8db0" fill-opacity=".28"/>
+  <path d="M176,252 h48 M184,262 h32 M192,272 h16" stroke="#e8743b" stroke-width="3"/>   <!-- its reflection -->
+  <g stroke="#3b8db0" stroke-width="3">
+    <path d="M40,244 q20,-8 40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0"/>
+    <path d="M60,270 q20,-8 40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0"/>
+    <path d="M80,296 q20,-8 40,0 t40,0 t40,0 t40,0 t40,0 t40,0"/>
+  </g>
+  <g stroke="#7a9a5a" stroke-width="3.2">
+    <path d="M104,352 C110,300 108,250 122,186"/><path d="M122,186 q30,-22 62,4"/><path d="M122,186 q24,-30 44,-38"/><path d="M122,186 q-6,-34 -30,-40"/><path d="M122,186 q-28,-18 -58,6"/><path d="M122,186 q-14,-8 -38,26"/><path d="M122,186 q16,-6 40,28"/>
+    <path d="M300,352 C296,312 300,280 290,232"/><path d="M290,232 q-22,-16 -46,3"/><path d="M290,232 q-18,-22 -33,-28"/><path d="M290,232 q4,-26 22,-30"/><path d="M290,232 q21,-14 44,4"/><path d="M290,232 q10,-6 28,20"/><path d="M290,232 q-12,-4 -30,21"/>
+  </g>
+</g>
+</svg>
